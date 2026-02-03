@@ -84,7 +84,7 @@
                             updateDisplay();
                         }
                     } else {
-                        // Obsługa samych sekund (jak wcześniej)
+
                         let newTime = parseInt(message);
                         if (!isNaN(newTime)) {
                             Time = newTime;
@@ -95,13 +95,15 @@
             }
         };
 
-        // WPISZ SWÓJ NICK TUTAJ
-        ComfyJS.Init("ixen_lol");
 
+      setTimeout(() => {
+    ComfyJS.Init("TWOJA_NAZWA_UZYTKOWNIKA");
+}, 2000);
         setInterval(TimeUp, 1000);
     </script>
 </body>
 
 </html>
+
 
 
