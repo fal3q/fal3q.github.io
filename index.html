@@ -60,14 +60,14 @@
 
         ComfyJS.onCommand = (user, command, message, flags) => {
             if (flags.broadcaster || flags.mod) {
-                if (command === "start") isRunning = true;
-                if (command === "stop") isRunning = false;
-                if (command === "reset") {
+                if (command === "tstart") isRunning = true;
+                if (command === "tstop") isRunning = false;
+                if (command === "treset") {
                     Time = 0;
                     updateDisplay();
                 }
                 
-                if (command === "set") {
+                if (command === "tset") {
                     if (message.includes(":")) {
                         // Obsługa formatu GG:MM:SS lub MM:SS
                         const parts = message.split(":").map(Number);
@@ -96,9 +96,10 @@
         };
 
         // WPISZ SWÓJ NICK TUTAJ
-        ComfyJS.Init("damiano00o");
+        ComfyJS.Init("ixen_lol");
 
         setInterval(TimeUp, 1000);
     </script>
 </body>
+
 </html>
