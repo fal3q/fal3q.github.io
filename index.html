@@ -58,51 +58,42 @@
             }
         }
 
-        ComfyJS.onCommand = (user, command, message, flags) => {
-            if (flags.broadcaster || flags.mod) {
-                if (command === "tstart") isRunning = true;
-                if (command === "tstop") isRunning = false;
-                if (command === "treset") {
-                    Time = 0;
-                    updateDisplay();
-                }
-                
-                if (command === "tset") {
-                    if (message.includes(":")) {
-                        // Obsługa formatu GG:MM:SS lub MM:SS
-                        const parts = message.split(":").map(Number);
-                        let totalSeconds = 0;
-
-                        if (parts.length === 3) { // GG:MM:SS
-                            totalSeconds = (parts[0] * 3600) + (parts[1] * 60) + parts[2];
-                        } else if (parts.length === 2) { // MM:SS
-                            totalSeconds = (parts[0] * 60) + parts[1];
-                        }
-                        
-                        if (!isNaN(totalSeconds)) {
-                            Time = totalSeconds;
-                            updateDisplay();
-                        }
-                    } else {
-
-                        let newTime = parseInt(message);
-                        if (!isNaN(newTime)) {
-                            Time = newTime;
-                            updateDisplay();
+        function connectTwitch() {
+            if (typeof ComfyJS !== "undefined") {
+                ComfyJS.onCommand = (user, command, message, flags) => {
+                    if (flags.broadcaster || flags.mod) {
+                        if (command === "tstart") isRunning = true;
+                        if (command === "tstop") isRunning = false;
+                        if (command === "treset") { Time = 0; updateDisplay(); }
+                        if (command === "tset") {
+                            if (message.includes(":")) {
+                                const parts = message.split(":").map(Number);
+                                let totalSeconds = 0;
+                                if (parts.length === 3) totalSeconds = (parts[0] * 3600) + (parts[1] * 60) + parts[2];
+                                else if (parts.length === 2) totalSeconds = (parts[0] * 60) + parts[1];
+                                if (!isNaN(totalSeconds)) { Time = totalSeconds; updateDisplay(); }
+                            } else {
+                                let newTime = parseInt(message);
+                                if (!isNaN(newTime)) { Time = newTime; updateDisplay(); }
+                            }
                         }
                     }
-                }
+                };
+                
+                // WPISZ SWÓJ NICK
+                ComfyJS.Init("ixen_lol");
+            } else {
+                setTimeout(connectTwitch, 500);
             }
-        };
+        }
 
-
-      setTimeout(() => {
-    ComfyJS.Init("ixen_lol");}, 2000);
         setInterval(TimeUp, 1000);
+        connectTwitch();
     </script>
 </body>
 
 </html>
+
 
 
 
