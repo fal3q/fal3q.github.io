@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-    <div class="Deaths">Smierci: 0</div>
+    <div class="Deaths">Próba: 0</div>
     <div class="Timer">Time: 00:00</div>
     <script>
     // Zmienne deklarujemy TYLKO RAZ
@@ -56,7 +56,7 @@
         let mDisplay = (m < 10 ? '0' + m : m) + ":";
         let sDisplay = s < 10 ? '0' + s : s;
 
-        display_deaths.textContent = "Smierci: " + Deaths;
+        display_deaths.textContent = "Próba: " + Deaths;
         display_time.textContent = "Time: " + hDisplay + mDisplay + sDisplay;
 
         localStorage.setItem("Deaths_count", Deaths);
