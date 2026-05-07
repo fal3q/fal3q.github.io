@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=VT323&display=swap" rel="stylesheet">
     <style>
         @font-face {
         font-family: 'MC-font';
@@ -13,7 +15,15 @@
         font-weight: normal;
         font-style: normal;
         font-display: swap;
+        
         }
+        
+        .montserrat-font {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+}
         body {
             margin: 0;
             display: flex;
@@ -25,15 +35,13 @@
             overflow: hidden;
         }
         .Timer, .Deaths{
-            color: white;
             -webkit-text-stroke: 3px black;
             font-size: 90px;
             letter-spacing: 5px;
-            font-family: 'MC-font', serif;
+            font-family: 'Montserrat', sans-serif;
         }
     </style>
 </head>
-<body>
     <div class="Deaths">Próba: 0</div>
     <div class="Timer">Time: 00:00</div>
     <script>
