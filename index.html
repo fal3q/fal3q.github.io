@@ -43,8 +43,8 @@
         }
     </style>
 </head>
-    <div class="Deaths">Śmierci: 0</div>
-    <div class="Timer">Time: 00:00</div>
+    <div class="Deaths">Próba: 0</div>
+    <div class="Timer">Czas: 00:00</div>
     <script>
     // Zmienne deklarujemy TYLKO RAZ
     let Time = localStorage.getItem("timer_time") ? parseInt(localStorage.getItem("timer_time")) : 0;
@@ -82,7 +82,7 @@
     function connectTwitch() {
         if (typeof ComfyJS !== "undefined") {
             ComfyJS.onCommand = (user, command, message, flags) => {
-                if (flags.broadcaster || flags.mod) {
+                if (flags.broadcaster || flags.mod || flags.vip) {
                     if (command === "t+") { Deaths++; updateDisplay(); }
                     if (command === "t-") { Deaths--; updateDisplay(); }
                     
