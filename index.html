@@ -7,13 +7,13 @@
     <title>Timer</title>
     
     <style>
-        /* @font-face {
+        @font-face {
             font-family: 'MC-font';
             src: url('MinecraftRegular-Bmg3.otf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
-        } */
+        }
         body {
             margin: 0;
             display: flex;
@@ -29,7 +29,7 @@
             -webkit-text-stroke: 3px black;
             font-size: 90px;
             letter-spacing: 5px;
-            font-family: Arial
+            font-family: 'MC-font', serif;
         }
         .Boss{
             margin-top: 15px;
@@ -39,7 +39,7 @@
             -webkit-text-stroke: 3px black;
             font-size: 90px;
             letter-spacing: 5px;
-            font-family: Arial
+            font-family: 'MC-font', serif;
         }
     </style>
 </head>
@@ -124,8 +124,6 @@
         if (typeof ComfyJS !== "undefined") {
             ComfyJS.onCommand = (user, command, message, flags) => {
                 if (flags.broadcaster || flags.mod || flags.vip) {
-                    
-                    // 1. USTAWIANIE NOWEGO BOSSA (resetuje czas, śmierć i nadaje nazwę)
                     if (command === "tbset") {
                         let cleanMessage = message ? message.replace(/[\u200B-\u200D\uFEFF\u00A0]/g, '').trim() : "";
                         if (cleanMessage !== "" && cleanMessage !== "." && cleanMessage !== "-") {
@@ -134,15 +132,19 @@
                             TimeBoss = 0;
                             isRunningBoss = true;
                             fullboss.style.visibility = "visible";
+                            if(!isRunning){
+                                isRunning = true;
+                            }
                             updateDisplay();
                         }
                     }
-
-                    // 2. WZNOWIENIE Z PAUZY (tylko wznawia, nie zmienia nazwy)
                     if (command === "tbresume") {
                         if (NameBoss && NameBoss.trim() !== "") {
                             isRunningBoss = true;
                             fullboss.style.visibility = "visible";
+                            if(!isRunning){
+                                isRunning = true;
+                            }
                             updateDisplay();
                         }
                     }
@@ -155,7 +157,7 @@
                         isRunning = false;
                         isRunningBoss = false;
                     }
-                    if (command === "tbstop") {
+                    if (command === "tbend") {
                         fullboss.style.visibility = "hidden";
                         isRunningBoss = false;
                         NameBoss = "";
@@ -183,12 +185,13 @@
                     }
                     if (command === "t+") {
                         Deaths++;
-                        if (fullboss.style.visibility === "visible") DeathsBoss++;
+                        if (fullboss.style.visibility === "visible" && isRunningBoss) DeathsBoss++;
                         updateDisplay();
                     }
+
                     if (command === "t-") {
                         Deaths--;
-                        if (fullboss.style.visibility === "visible") DeathsBoss--;
+                        if (fullboss.style.visibility === "visible" && isRunningBoss) DeathsBoss--;
                         updateDisplay();
                     }
                     if (command === "treset") {
@@ -199,7 +202,12 @@
                     if (command === "tfullreset") {
                         Time = 0;
                         Deaths = 0;
-                        if (fullboss.style.visibility === "visible") TimeBoss = 0;
+                        if (fullboss.style.visibility === "visible"){
+                            fullboss.style.visibility = "hidden";
+                            isRunningBoss = false;
+                            NameBoss = "";
+                            localStorage.setItem("timerBoss_name", "");
+                        }
                         updateDisplay();
                     }
                 }
