@@ -28,8 +28,12 @@
             color: white;
             -webkit-text-stroke: 3px black;
             font-size: 90px;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             font-family: MC-font, serif;
+        }
+        .Swiaty{
+            Margin-top: 20px;
+            Margin-bottom: 20px;
         }
         .Boss{
             margin-top: 15px;
@@ -44,9 +48,9 @@
     </style>
 </head>
 <body>
-    <div class="Deaths">Smierci: 0</div>
-    <div class="Swiaty">Swiaty: 0</div>
-    <div class="Timer">Time: 00:00</div>
+    <div class="Deaths">0</div>
+    <div class="Swiaty">0</div>
+    <div class="Timer">00:00</div>
     <div class="Boss" style="visibility: hidden;">
         <div class="NameBoss"></div>
         <div class="DeathsBoss"></div>
@@ -94,9 +98,9 @@
         display_worlds.textContent = "Swiaty: " + Worlds;
         display_time.textContent = "Time: " + hDisplay + mDisplay + sDisplay;
 
-        localStorage.setItem("Deaths_count", Deaths);
-        localStorage.setItem("Worlds_count", Worlds);
-        localStorage.setItem("timer_time", Time);
+        localStorage.setItem(Deaths);
+        localStorage.setItem(Worlds);
+        localStorage.setItem(Time);
         
         // Sekcja Bossa - wyświetlanie
         if (NameBoss && NameBoss.trim() !== "") {
