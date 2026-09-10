@@ -91,9 +91,11 @@
         let sDisplay = s < 10 ? '0' + s : s;
 
         display_deaths.textContent = "Smierci: " + Deaths;
+        display_deaths.textContent = "Swiaty:: " + Worlds;
         display_time.textContent = "Time: " + hDisplay + mDisplay + sDisplay;
 
         localStorage.setItem("Deaths_count", Deaths);
+        localStorage.setItem("Worlds_count", Worlds);
         localStorage.setItem("timer_time", Time);
         
         // Sekcja Bossa - wyświetlanie
@@ -187,8 +189,13 @@
                         if (!isNaN(totalSeconds)) { Time = totalSeconds; updateDisplay(); }
                     }
                     if (command === "t+") {
+                        Worlds++;
                         Deaths++;
                         if (fullboss.style.visibility === "visible" && isRunningBoss) DeathsBoss++;
+                        updateDisplay();
+                    }
+                    if (command === "tw+") {
+                        Worlds++;
                         updateDisplay();
                     }
 
