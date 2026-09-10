@@ -7,13 +7,13 @@
     <title>Timer</title>
     
     <style>
-        /* @font-face {
+         @font-face {
             font-family: 'MC-font';
             src: url('MinecraftRegular-Bmg3.otf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
-        } */
+        }
         body {
             margin: 0;
             display: flex;
@@ -29,7 +29,7 @@
             -webkit-text-stroke: 3px black;
             font-size: 90px;
             letter-spacing: 5px;
-            font-family: Arial, sans-serif;
+            font-family: MC-font, serif;
         }
         .Boss{
             margin-top: 15px;
@@ -39,12 +39,13 @@
             -webkit-text-stroke: 3px black;
             font-size: 90px;
             letter-spacing: 5px;
-            font-family: Arial, sans-serif;
+            font-family: MC-font, serif;
         }
     </style>
 </head>
 <body>
     <div class="Deaths">Smierci: 0</div>
+    <div class="Swiaty">Swiaty: 0</div>
     <div class="Timer">Time: 00:00</div>
     <div class="Boss" style="visibility: hidden;">
         <div class="NameBoss"></div>
@@ -55,8 +56,10 @@
     // Glowny Timer + śmierci
     let Time = localStorage.getItem("timer_time") ? parseInt(localStorage.getItem("timer_time")) : 0;
     let Deaths = localStorage.getItem("Deaths_count") ? parseInt(localStorage.getItem("Deaths_count")) : 0;
+    let Worlds = localStorage.getItem("Worlds_count") ? parseInt(localStorage.getItem("Worlds_count")) : 0;
     let isRunning = false;
     const display_deaths = document.querySelector(".Deaths");
+    const display_worlds = document.querySelector(".Worlds");
     const display_time = document.querySelector(".Timer");
     
     // Boss Timer + śmierci
