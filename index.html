@@ -94,9 +94,9 @@
         let mDisplay = (m < 10 ? '0' + m : m) + ":";
         let sDisplay = s < 10 ? '0' + s : s;
 
-        display_deaths.textContent = "Smierci: " + Deaths;
-        display_worlds.textContent = "Swiaty: " + Worlds;
-        display_time.textContent = "Time: " + hDisplay + mDisplay + sDisplay;
+        display_deaths.textContent = Deaths;
+        display_worlds.textContent = Worlds;
+        display_time.textContent = hDisplay + mDisplay + sDisplay;
 
         localStorage.setItem(Deaths);
         localStorage.setItem(Worlds);
