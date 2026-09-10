@@ -24,7 +24,7 @@
             background-color: transparent;
             overflow: hidden;
         }
-        .Timer, .Deaths, .Worlds{
+        .Timer, .Deaths, .Swiaty{
             color: white;
             -webkit-text-stroke: 3px black;
             font-size: 90px;
@@ -91,7 +91,7 @@
         let sDisplay = s < 10 ? '0' + s : s;
 
         display_deaths.textContent = "Smierci: " + Deaths;
-        display_deaths.textContent = "Swiaty:: " + Worlds;
+        display_worlds.textContent = "Swiaty: " + Worlds;
         display_time.textContent = "Time: " + hDisplay + mDisplay + sDisplay;
 
         localStorage.setItem("Deaths_count", Deaths);
