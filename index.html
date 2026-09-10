@@ -19,10 +19,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;  
             height: 100vh;
+            width: 100vw;
+            box-sizing: border-box;
             background-color: transparent;
             overflow: hidden;
+            text-align: right;  
         }
         .Timer, .Deaths, .Swiaty{
             color: white;
@@ -32,8 +35,8 @@
             font-family: MC-font, serif;
         }
         .Swiaty{
-            Margin-top: 20px;
-            Margin-bottom: 20px;
+            Margin-top: 40px;
+            Margin-bottom: 40px;
         }
         .Boss{
             margin-top: 15px;
@@ -48,9 +51,9 @@
     </style>
 </head>
 <body>
-    <div class="Deaths">0</div>
-    <div class="Swiaty">0</div>
     <div class="Timer">00:00</div>
+    <div class="Swiaty">0</div>
+    <div class="Deaths">0</div>
     <div class="Boss" style="visibility: hidden;">
         <div class="NameBoss"></div>
         <div class="DeathsBoss"></div>
@@ -63,7 +66,7 @@
     let Worlds = localStorage.getItem("Worlds_count") ? parseInt(localStorage.getItem("Worlds_count")) : 0;
     let isRunning = false;
     const display_deaths = document.querySelector(".Deaths");
-    const display_worlds = document.querySelector(".Worlds");
+    const display_worlds = document.querySelector(".Swiaty");
     const display_time = document.querySelector(".Timer");
     
     // Boss Timer + śmierci
@@ -98,9 +101,9 @@
         display_worlds.textContent = Worlds;
         display_time.textContent = hDisplay + mDisplay + sDisplay;
 
-        localStorage.setItem(Deaths);
-        localStorage.setItem(Worlds);
-        localStorage.setItem(Time);
+        localStorage.setItem("Deaths_count",Deaths);
+        localStorage.setItem("Worlds_count",Worlds);
+        localStorage.setItem("timer_time",Time);
         
         // Sekcja Bossa - wyświetlanie
         if (NameBoss && NameBoss.trim() !== "") {
