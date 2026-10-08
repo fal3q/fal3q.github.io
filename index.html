@@ -216,6 +216,10 @@
                         if (fullboss.style.visibility === "visible") TimeBoss = 0;
                         updateDisplay();
                     }
+                    if (command === "twset" || command === "tw++") {
+                        let val = parseInt(message);
+                        if (!isNaN(val)) { Worlds = val; updateDisplay(); }
+                    }
                     if (command === "tfullreset") {
                         Time = 0;
                         Deaths = 0;
